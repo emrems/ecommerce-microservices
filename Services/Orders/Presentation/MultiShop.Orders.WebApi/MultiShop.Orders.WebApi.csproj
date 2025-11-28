@@ -14,4 +14,8 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Infrastructure\MultiShop.Orders.Persistance\MultiShop.Orders.Persistance.csproj" />
+  </ItemGroup>
+
 </Project>
