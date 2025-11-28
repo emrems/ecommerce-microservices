@@ -17,7 +17,7 @@ builder.Services.AddScoped<IProductDetailService, ProductDetailService>();
 
 builder.Services.AddScoped<IProductImageService, ProductImageService>();
 
-builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("DatabaseSettings"));
 
 builder.Services.AddScoped<IDatabaseSettings>(sp =>
