@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MultiShop.Discount.Context;
+using MultiShop.Discount.Services;
 
 internal class Program
 {
@@ -13,6 +14,8 @@ internal class Program
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+        builder.Services.AddTransient<DapperContext>();
+        builder.Services.AddTransient<IDiscountService, DiscountService>();
         builder.Services.AddDbContext<DapperContext>(options =>
         {
             options.UseSqlServer(
