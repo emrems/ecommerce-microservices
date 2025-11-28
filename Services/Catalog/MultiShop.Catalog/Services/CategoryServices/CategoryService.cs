@@ -16,7 +16,7 @@ namespace MultiShop.Catalog.Services.CategoryServices
         {
             var client = new MongoClient(_databaseSettings.ConnectionString);//bağlantı sağlandı
             var database = client.GetDatabase(_databaseSettings.DatabaseName);//db ye gittim
-            _categoryCollection = database.GetCollection<Category>(_databaseSettings.DatabaseName);//db collectiona ulaştım
+            _categoryCollection = database.GetCollection<Category>(_databaseSettings.CategoryCollectionName);//db collectiona ulaştım
             _mapper = mapper;
         }
 
