@@ -10,12 +10,16 @@
     <PackageReference Include="AutoMapper" Version="15.1.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="MongoDB.Bson" Version="3.5.2" />
+    <PackageReference Include="MongoDB.Driver" Version="3.5.2" />
     <PackageReference Include="MongoDB.Driver.Core" Version="2.30.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Controllers\" />
+    <Folder Include="Services\ProductDetailServices\" />
+    <Folder Include="Services\ProductImageServices\" />
+    <Folder Include="Services\ProductServices\" />
   </ItemGroup>
 
 </Project>
