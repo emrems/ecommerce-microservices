@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MultiShop.Orders.Application.Features.Mediator.Results.OrderingResults
+{
+    public class GetOrderingByIdQueryResult
+    {
+        public int OrderingId { get; set; }
+        public int UserId { get; set; }
+        public decimal TotalPrice { get; set; }
+        public DateTime OrderDate { get; set; }
+    }
+}

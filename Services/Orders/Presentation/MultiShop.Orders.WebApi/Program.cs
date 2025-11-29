@@ -1,4 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using MultiShop.Orders.Application.Features.CQRS.Handlers.AdressHandlers;
+using MultiShop.Orders.Application.Features.CQRS.Handlers.OrderDetailHandlers;
+using MultiShop.Orders.Application.Features.CQRS.Queries.OrderDetailQueries;
 using MultiShop.Orders.Persistance.Context;
 
 internal class Program
@@ -6,9 +9,19 @@ internal class Program
     private static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+        builder.Services.AddScoped<GetAdressByIdQueryHandler>();
+        builder.Services.AddScoped<GetAdressQueryHandler>();
+        builder.Services.AddScoped<CreateAdressCommandHandler>();
+        builder.Services.AddScoped<UpdateAdressCommandHandler>();
+        builder.Services.AddScoped<RemoveAdressCommandHandler>();
 
-        // Add services to the container.
 
+        builder.Services.AddScoped<GetOrderDetailQueryHandler>();
+        builder.Services.AddScoped<GetOrderDetailByIdQueryHandler>();
+        builder.Services.AddScoped<CreateOrderDetailCommandHandler>();
+        builder.Services.AddScoped<UpdateOrderDetailCommandHandler>();
+        builder.Services.AddScoped<RemoveOrderDetailCommandHandler>();
+       
         builder.Services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
