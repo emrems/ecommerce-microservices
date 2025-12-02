@@ -23,15 +23,16 @@ namespace MultiShop.IdentityServer
             new ApiResource("ResourceOrder")
             {
                 Scopes = {"OrderFullPermission"}
-            }
+            },
+            new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
         };
 
         //IdentityResources ifadesi ile tokenini aldığım kullanıcının 3 değerine erişebilicem token içinde
         public static IEnumerable<IdentityResource> IdentityResources => new IdentityResource[]
         {
-            new IdentityResources.OpenId(),
-            new IdentityResources.Email(),
-            new IdentityResources.Profile()
+            //new IdentityResources.OpenId(),
+            //new IdentityResources.Email(),
+            //new IdentityResources.Profile()
         };
 
         public static IEnumerable<ApiScope> ApiScopes => new ApiScope[]
@@ -40,7 +41,8 @@ namespace MultiShop.IdentityServer
             new ApiScope("CatalogFullPermisson","Full authority for catalog operations"),
             new ApiScope("CatalogReadPermission","Reading authority for catalog operations"),
             new ApiScope("DiscountFullPermission","Reading authority for discount operations"),
-            new ApiScope("OrderFullPermission","Reading authority for order operations")
+            new ApiScope("OrderFullPermission","Reading authority for order operations"),
+            new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
         };
 
         // kendi clientlerimizi oluşturacağız
