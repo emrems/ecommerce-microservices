@@ -30,9 +30,9 @@ namespace MultiShop.IdentityServer
         //IdentityResources ifadesi ile tokenini aldığım kullanıcının 3 değerine erişebilicem token içinde
         public static IEnumerable<IdentityResource> IdentityResources => new IdentityResource[]
         {
-            //new IdentityResources.OpenId(),
-            //new IdentityResources.Email(),
-            //new IdentityResources.Profile()
+            new IdentityResources.OpenId(),
+            new IdentityResources.Email(),
+            new IdentityResources.Profile()
         };
 
         public static IEnumerable<ApiScope> ApiScopes => new ApiScope[]
@@ -58,7 +58,7 @@ namespace MultiShop.IdentityServer
                 {
                     new Secret("multishopsecret".Sha256())
                 },
-                AllowedScopes={ "CatalogReadPermission" }
+                AllowedScopes={ "DiscountFullPermission" }
 
             },
             //Manger
