@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Multishop.Cargo.DataAccessLayer\Multishop.Cargo.DataAccessLayer.csproj" />
+    <ProjectReference Include="..\Multishop.Cargo.DtosLayer\Multishop.Cargo.DtosLayer.csproj" />
+    <ProjectReference Include="..\Multishop.Cargo.EntityLayer\Multishop.Cargo.EntityLayer.csproj" />
   </ItemGroup>
 
   <ItemGroup>

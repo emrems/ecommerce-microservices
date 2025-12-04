@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Multishop.Cargo.BusinessLayer.Concreate
 {
-    public class CargoCompanyManager : IGenericService<CargoCompany>
+    public class CargoCompanyManager : ICargoCompanyService
     {
         private readonly ICargoCompanyDal _cargoCompany;
 
