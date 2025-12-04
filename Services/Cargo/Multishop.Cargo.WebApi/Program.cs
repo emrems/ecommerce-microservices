@@ -1,9 +1,16 @@
+using Microsoft.EntityFrameworkCore;
+using Multishop.Cargo.DataAccessLayer;
+
 internal class Program
 {
     private static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-
+        builder.Services.AddDbContext<CargoContext>(options =>
+        {
+            options.UseSqlServer(
+                builder.Configuration.GetConnectionString("DefaultConnection"));
+        });
         // Add services to the container.
 
         builder.Services.AddControllers();
