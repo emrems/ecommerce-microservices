@@ -84,7 +84,7 @@ namespace MultiShop.IdentityServer
                 {
                     new Secret("multishopsecret".Sha256())
                 },
-                AllowedScopes=
+                AllowedScopes =
                 {   "CatalogReadPermission",
                     "CatalogFullPermisson",
                     "DiscountFullPermission",
