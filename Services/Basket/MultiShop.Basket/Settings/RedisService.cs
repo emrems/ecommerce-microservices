@@ -2,19 +2,45 @@
 
 namespace MultiShop.Basket.Settings
 {
-    public class RedisService
+    public class RedisService : IDisposable
     {
         private readonly string _host;
         private readonly int _port;
-        private  ConnectionMultiplexer _connectionMultiplexer;//redise bağlanma için lazım
+        private ConnectionMultiplexer? _connectionMultiplexer;
+
         public RedisService(string host, int port)
         {
             _host = host;
             _port = port;
-            
+            Connect(); //redisservice çağrıldığında hemen bağlan
         }
-        public void Connect() => _connectionMultiplexer = ConnectionMultiplexer.Connect($"{_host}:{_port}");
-        public IDatabase GetDb(int db = 1) => _connectionMultiplexer.GetDatabase(0);
 
+        // Güvenli bağlantı 
+        private void Connect()
+        {
+            if (_connectionMultiplexer != null && _connectionMultiplexer.IsConnected)
+                return;
+
+            _connectionMultiplexer = ConnectionMultiplexer.Connect($"{_host}:{_port}");
+        }
+
+       
+        public IDatabase GetDb(int db = 0)
+        {
+            if (_connectionMultiplexer == null || !_connectionMultiplexer.IsConnected)
+                Connect();
+
+            return _connectionMultiplexer!.GetDatabase(db);
+        }
+
+        // Kaynak temizleme
+        public void Dispose()
+        {
+            if (_connectionMultiplexer != null)
+            {
+                _connectionMultiplexer.Close();
+                _connectionMultiplexer.Dispose();
+            }
+        }
     }
 }

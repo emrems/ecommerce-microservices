@@ -76,7 +76,7 @@ namespace MultiShop.IdentityServer
             {
                  ClientId="MultiShopManagerId",
                 ClientName="MultiShop Manager User",
-                AllowedGrantTypes=GrantTypes.ClientCredentials,
+                AllowedGrantTypes=GrantTypes.ResourceOwnerPassword,
                 ClientSecrets =
                 {
                     new Secret("multishopsecret".Sha256())
@@ -89,7 +89,7 @@ namespace MultiShop.IdentityServer
             {
                 ClientId="MultiShopAdminId",
                 ClientName="MultiShop Admin User",
-                AllowedGrantTypes=GrantTypes.ClientCredentials,
+                AllowedGrantTypes=GrantTypes.ResourceOwnerPassword,
                 ClientSecrets =
                 {
                     new Secret("multishopsecret".Sha256())

@@ -1,4 +1,6 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Multishop.Cargo.BusinessLayer;
 using Multishop.Cargo.BusinessLayer.Abstract;
@@ -12,12 +14,15 @@ internal class Program
     private static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+        
+        //ıdentityserver yapılandırması
         builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
         {
             opt.Authority = builder.Configuration["IdentityServerUrl"];
-            opt.Audience = "ResourceCargo";//ResourceCatalog tokenine sahip olanlar ?dentityServer configde tan?ml? permissionlara sahip olabilecek
+            opt.Audience = "ResourceCargo";
             opt.RequireHttpsMetadata = false;
         });
+        // db yapılandırması
         builder.Services.AddDbContext<CargoContext>(options =>
         {
             options.UseSqlServer(

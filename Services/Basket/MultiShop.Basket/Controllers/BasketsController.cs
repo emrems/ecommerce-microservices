@@ -20,8 +20,9 @@ namespace MultiShop.Basket.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetBasket()
+        public async Task<IActionResult> GetBasketAll()
         {
+            var user = User.Claims;//token içindeki claimleri getirir
             var userId =  _loginService.GetUserId;
             var basket= await _service.GetBasket(userId);
             return Ok(basket);
