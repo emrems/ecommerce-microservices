@@ -12,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
 {
     opt.Authority = builder.Configuration["IdentityServerUrl"];
-    opt.Audience = "ResourceCatalog";//ResourceCatalog tokenine sahip olanlar ?dentityServer configde tan?ml? permissionlara sahip olabilecek
+    opt.Audience = "ResourceCatalog";
     opt.RequireHttpsMetadata = false;
 });
 // Add services to the container.
