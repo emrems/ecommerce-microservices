@@ -8,6 +8,7 @@ namespace MultiShop.DtoLayer.CatalogDtos.CategoryDtos
 {
     public class CreateCategoryDto
     {
+        public string ImageUrl { get; set; }
         public string CategoryName { get; set; }
     }
 }
