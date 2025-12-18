@@ -1,6 +1,12 @@
-﻿namespace MultiShop.Catalog.Dtos.ProductImageDtos
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MultiShop.DtoLayer.CatalogDtos.ProductImageDtos
 {
-    public class GetByIdProductImageDto
+    public class ResultProductImageDto
     {
         public string ProductImageId { get; set; }
         public string Image1 { get; set; }

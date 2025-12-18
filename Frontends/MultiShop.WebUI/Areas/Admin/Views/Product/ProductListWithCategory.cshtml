@@ -22,6 +22,8 @@
                                 <th>Ürün Kategorisi</th>
                                 <th>sil </th>
                                 <th>güncelle </th>
+                                <th>Ürün görselleri </th>
+                                <th>Ürün detayları </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -37,6 +39,8 @@
                                     
                                     <td><a href="/Admin/Product/DeleteProduct/@item.ProductId" class="btn btn-danger">sil</a></td>
                                     <td><a href="/Admin/Product/UpdateProduct/@item.ProductId" class="btn btn-success">güncelle</a></td>
+                                    <td><a href="/Admin/ProductImage/ProductDetailImage/@item.ProductId" class="btn btn-warning">ürün görselleri</a></td>
+                                    <td><a href="/Admin/ProductDetail/UpdateProductDetail/@item.ProductId" class="btn btn-warning">ürün detaylarına git</a></td>
 
                                 </tr>
                             }
