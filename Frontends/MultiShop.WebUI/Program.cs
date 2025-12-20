@@ -1,34 +1,49 @@
-internal class Program
-{
-    private static void Main(string[] args)
+using Microsoft.AspNetCore.Authentication.Cookies;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
     {
-        var builder = WebApplication.CreateBuilder(args);
-        builder.Services.AddHttpClient();
-        builder.Services.AddControllersWithViews();
+        options.LoginPath = "/Login/Index";
+        options.LogoutPath = "/Login/Logout";
+        options.AccessDeniedPath = "/Pages/AccessDenied";
 
-        var app = builder.Build();
+        options.Cookie.Name = "MultiShopAuth";
+        options.Cookie.HttpOnly = true;
+        options.Cookie.SameSite = SameSiteMode.Strict;
+        options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
 
-        if (!app.Environment.IsDevelopment())
-        {
-            app.UseExceptionHandler("/Home/Error");
-            app.UseHsts();
-        }
+        options.ExpireTimeSpan = TimeSpan.FromDays(1);
+        options.SlidingExpiration = true;
+    });
 
-        app.UseHttpsRedirection();
-        app.UseStaticFiles();
-        app.UseRouting();
-        app.UseAuthorization();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<MultiShop.WebUI.Services.ILoginService, MultiShop.WebUI.Services.LoginService>();
+builder.Services.AddHttpClient();
+builder.Services.AddControllersWithViews();
 
-        // Area route önce tan?mlanmal? (daha spesifik)
-        app.MapControllerRoute(
-            name: "areas",
-            pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+var app = builder.Build();
 
-        // Default route sonra
-        app.MapControllerRoute(
-            name: "default",
-            pattern: "{controller=Home}/{action=Index}/{id?}");
-
-        app.Run();
-    }
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Home/Error");
+    app.UseHsts();
 }
+
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseRouting();
+
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "areas",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.Run();

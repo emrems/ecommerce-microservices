@@ -1,4 +1,4 @@
-﻿
+﻿@model LoginDto
 @{
     Layout = null;
 }
@@ -47,14 +47,14 @@
                 <div class="form-row">
                     <label>Kullanıcı adınız</label>
                     <input type="text"
-                         
+                            asp-for="UserName"
                            class="input-text"
                            required />
                 </div>
                 <div class="form-row">
                     <label>şifreniz</label>
                     <input type="password"
-                          
+                          asp-for="Password"
                            class="input-text"
                            required />
                 </div>
