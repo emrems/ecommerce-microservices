@@ -1,0 +1,158 @@
+﻿@model CreateRegisterDto
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Kayıt olma</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="~/colorlib-regform-30/css/opensans-font.css" />
+    <link rel="stylesheet" href="~/colorlib-regform-30/fonts/line-awesome/css/line-awesome.min.css" />
+
+    <!-- Main Style -->
+    <link rel="stylesheet" href="~/colorlib-regform-30/css/style.css" />
+</head>
+
+<body class="form-v4">
+
+    <div class="page-content">
+        <div class="form-v4-content">
+
+            <!-- LEFT INFO -->
+            <div class="form-left">
+                <h2>E-ticaret</h2>
+
+                <p class="text-1">
+                    e-tücaret işlemleri gerçekleştirebilmek ve fırsatlardan haberdar olmak için kayıt olun
+                </p>
+
+                <div class="form-left-last">
+                    <a href="/Login/Index">Giriş yap</a>
+                </div>
+            </div>
+
+            <!-- FORM -->
+            <form class="form-detail"
+                  method="post">
+
+                <h2>Kayıt Formu</h2>
+
+                <div class="form-group">
+                    <div class="form-row form-row-1">
+                        <label>Adınız</label>
+                        <input type="text"
+                               asp-for="Name"
+                               class="input-text"
+                               required />
+                    </div>
+
+                    <div class="form-row form-row-1">
+                        <label>Soyadınız</label>
+                        <input type="text"
+                               asp-for="SurName"
+                               class="input-text"
+                               required />
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <label>Email</label>
+                    <input type="text"
+                           asp-for="Email"
+                           class="input-text"
+                           required />
+                </div>
+                <div class="form-row">
+                    <label>Kullanıcı adınız</label>
+                    <input type="text"
+                           asp-for="UserName"
+                           class="input-text"
+                           required />
+                </div>
+
+                <div class="form-group">
+                    <div class="form-row form-row-1">
+                        <label>Şifre</label>
+                        <input type="password"
+                               asp-for="Password"
+                               id="password"
+                               class="input-text"
+                               required />
+                    </div>
+
+                    <div class="form-row form-row-1">
+                        <label>Şifre tekrar</label>
+                        <input type="password"
+                               asp-for="ConfirmPassword"
+                               class="input-text"
+                               required />
+                    </div>
+                </div>
+
+
+                <div class="form-row-last">
+                    <input type="submit"
+                           class="register"
+                           value="Register" />
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+
+    <script>
+        $(function () {
+
+            $("#myform").validate({
+                rules: {
+                    first_name: {
+                        required: true
+                    },
+                    last_name: {
+                        required: true
+                    },
+                    your_email: {
+                        required: true,
+                        email: true
+                    },
+                    password: {
+                        required: true
+                    },
+                    comfirm_password: {
+                        required: true,
+                        equalTo: "#password"
+                    },
+                    terms: {
+                        required: true
+                    }
+                },
+                messages: {
+                    first_name: "Please enter first name",
+                    last_name: "Please enter last name",
+                    your_email: "Please enter a valid email",
+                    password: "Please enter password",
+                    comfirm_password: "Passwords do not match",
+                    terms: "You must accept the terms"
+                }
+            });
+
+        });
+    </script>
+
+</body>
+</html>
+
