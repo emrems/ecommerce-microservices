@@ -1,0 +1,119 @@
+ {
+        "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+        "UpstreamPathTemplate": "/services/discount/{everything}",
+        "UpstreamScheme": "http",
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "OcelotAuthenticationScheme",
+          "AllowedScopes": [ "DiscountFullPermission" ]
+        },
+        "DownstreamPathTemplate": "/api/{everything}",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 7029
+          }
+        ]
+      },
+      {
+        "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+        "UpstreamPathTemplate": "/services/orders/{everything}",
+        "UpstreamScheme": "http",
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "OcelotAuthenticationScheme",
+          "AllowedScopes": [ "OrderFullPermission" ]
+        },
+        "DownstreamPathTemplate": "/api/{everything}",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 7030
+          }
+        ]
+      },
+      {
+        "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+        "UpstreamPathTemplate": "/services/cargo/{everything}",
+        "UpstreamScheme": "http",
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "OcelotAuthenticationScheme",
+          "AllowedScopes": [ "CargoFullPermission" ]
+        },
+        "DownstreamPathTemplate": "/api/{everything}",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 7031
+          }
+        ]
+      },
+      {
+        "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+        "UpstreamPathTemplate": "/services/basket/{everything}",
+        "UpstreamScheme": "http",
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "OcelotAuthenticationScheme",
+          "AllowedScopes": [ "BasketFullPermission" ]
+        },
+        "DownstreamPathTemplate": "/api/{everything}",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 7032
+          }
+        ]
+      },
+      {
+        "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+        "UpstreamPathTemplate": "/services/comment/{everything}",
+        "UpstreamScheme": "http",
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "OcelotAuthenticationScheme",
+          "AllowedScopes": [ "CommentFullPermission" ]
+        },
+        "DownstreamPathTemplate": "/api/{everything}",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 7033
+          }
+        ]
+      },
+      {
+        "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+        "UpstreamPathTemplate": "/services/payment/{everything}",
+        "UpstreamScheme": "http",
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "OcelotAuthenticationScheme",
+          "AllowedScopes": [ "PaymentFullPermission" ]
+        },
+        "DownstreamPathTemplate": "/api/{everything}",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 7034
+          }
+        ]
+      },
+      {
+        "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+        "UpstreamPathTemplate": "/services/images/{everything}",
+        "UpstreamScheme": "http",
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "OcelotAuthenticationScheme",
+          "AllowedScopes": [ "ImagesFullPermission" ]
+        },
+        "DownstreamPathTemplate": "/api/{everything}",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 7035
+          }
+        ]
+      }

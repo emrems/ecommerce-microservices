@@ -1,0 +1,147 @@
+
+  {
+    "Routes": [
+      {
+        "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+        "UpstreamPathTemplate": "/services/catalog/{everything}",
+        "UpstreamScheme": "http",
+        "DownstreamPathTemplate": "/api/{everything}",
+        "DownstreamScheme": "http",
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "OcelotAuthenticationScheme",
+          "AllowedScopes": [ "CatalogFullPermisson" ]
+        },
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 7028
+          }
+        ]
+      },
+      {
+        "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+        "UpstreamPathTemplate": "/services/discount/{everything}",
+        "UpstreamScheme": "http",
+        "DownstreamPathTemplate": "/api/{everything}",
+        "DownstreamScheme": "http",
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "OcelotAuthenticationScheme",
+          "AllowedScopes": [ "DiscountFullPermission" ]
+        },
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 7029
+          }
+        ]
+      },
+      {
+        "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+        "UpstreamPathTemplate": "/services/orders/{everything}",
+        "UpstreamScheme": "http",
+        "DownstreamPathTemplate": "/api/{everything}",
+        "DownstreamScheme": "http",
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "OcelotAuthenticationScheme",
+          "AllowedScopes": [ "OrderFullPermission" ]
+        },
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 7030
+          }
+        ]
+      },
+      {
+        "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+        "UpstreamPathTemplate": "/services/cargo/{everything}",
+        "UpstreamScheme": "http",
+        "DownstreamPathTemplate": "/api/{everything}",
+        "DownstreamScheme": "http",
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "OcelotAuthenticationScheme",
+          "AllowedScopes": [ "CargoFullPermission" ]
+        },
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 7031
+          }
+        ]
+      },
+      {
+        "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+        "UpstreamPathTemplate": "/services/basket/{everything}",
+        "UpstreamScheme": "http",
+        "DownstreamPathTemplate": "/api/{everything}",
+        "DownstreamScheme": "http",
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "OcelotAuthenticationScheme",
+          "AllowedScopes": [ "BasketFullPermission" ]
+        },
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 7032
+          }
+        ]
+      },
+      {
+        "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+        "UpstreamPathTemplate": "/services/comment/{everything}",
+        "UpstreamScheme": "http",
+        "DownstreamPathTemplate": "/api/{everything}",
+        "DownstreamScheme": "http",
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "OcelotAuthenticationScheme",
+          "AllowedScopes": [ "CommentFullPermission" ]
+        },
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 7033
+          }
+        ]
+      },
+      {
+        "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+        "UpstreamPathTemplate": "/services/payment/{everything}",
+        "UpstreamScheme": "http",
+        "DownstreamPathTemplate": "/api/{everything}",
+        "DownstreamScheme": "http",
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "OcelotAuthenticationScheme",
+          "AllowedScopes": [ "PaymentFullPermission" ]
+        },
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 7034
+          }
+        ]
+      },
+      {
+        "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+        "UpstreamPathTemplate": "/services/images/{everything}",
+        "UpstreamScheme": "http",
+        "DownstreamPathTemplate": "/api/{everything}",
+        "DownstreamScheme": "http",
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "OcelotAuthenticationScheme",
+          "AllowedScopes": [ "ImageFullPermission" ]
+        },
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 7035
+          }
+        ]
+      }
+
+    ],
+    "GlobalConfiguration": {
+      "BaseUrl": "http://localhost:5000"
+    }
+  }
+
+
