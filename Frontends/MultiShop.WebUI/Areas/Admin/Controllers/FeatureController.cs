@@ -1,22 +1,24 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos.FeatureDtos;
+using MultiShop.WebUI.Services.CatalogServices.FeatureServices;
 using Newtonsoft.Json;
 using System.Text;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [AllowAnonymous]
+  
     [Route("Admin/Feature")]
     public class FeatureController : Controller
     {
-        private readonly IHttpClientFactory _httpClient;
+        private readonly IFeatureService _featureService;
 
-        public FeatureController(IHttpClientFactory client)
+        public FeatureController(IFeatureService featureService)
         {
-            _httpClient = client;
+            _featureService = featureService;
         }
+
         [Route("Index")]
         public async Task<IActionResult> Index()
         {
@@ -24,15 +26,9 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v2 = "Öne çıkan alanlar";
             ViewBag.v3 = "Öne çıkan alan listesi";
             ViewBag.v0 = "Öne çıkan alan işlemleri";
-            var client = _httpClient.CreateClient();
-            var response = await client.GetAsync("https://localhost:7028/api/Features");
-            if (response.IsSuccessStatusCode)
-            {
-                var jsonData = await response.Content.ReadAsStringAsync();// json gelecek serialize etmek lazım
-                var values = JsonConvert.DeserializeObject<List<ResultFeatureDto>>(jsonData);
-                return View(values);
-            }
-            return View();
+           
+            var values = await _featureService.GetAllFeatureAsync();
+            return View(values);
         }
 
         [HttpGet]
@@ -49,28 +45,20 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("CreateFeature")]
         public async Task<IActionResult> CreateFeature(CreateFeatureDto dto)
         {
-            var client = _httpClient.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(dto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var response = await client.PostAsync("https://localhost:7028/api/Features", stringContent);
-            if (response.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index", "Feature", new { area = "Admin" });
-            }
-            return View();
+            
+           await _featureService.CreateFeatureAsync(dto);
+            
+           return RedirectToAction("Index", "Feature", new { area = "Admin" });
+         
         }
 
 
         [Route("DeleteFeature/{id}")]
         public async Task<IActionResult> DeleteFeature(string id)
         {
-            var client = _httpClient.CreateClient();
-            var response = await client.DeleteAsync("https://localhost:7028/api/Features?id=" + id);
-            if (response.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index", "Feature", new { area = "Admin" });
-            }
-            return View();
+            
+            await _featureService.DeleteFeatureAsync(id);
+            return RedirectToAction("Index", "Feature", new { area = "Admin" });
         }
 
         [Route("UpdateFeature/{id}")]
@@ -81,15 +69,9 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v2 = "Öne çıkan alanlar";
             ViewBag.v3 = "Öne çıkan alan listesi";
             ViewBag.v0 = "Öne çıkan alan işlemleri";
-            var client = _httpClient.CreateClient();
-            var response = await client.GetAsync("https://localhost:7028/api/Features/" + id);
-            if (response.IsSuccessStatusCode)
-            {
-                var jsonData = await response.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<UpdateFeatureDto>(jsonData);
-                return View(values);
-            }
-            return View();
+            
+            var value = await _featureService.GetByIdFeatureAsync(id);
+            return View(value);
         }
 
         [Route("UpdateFeature/{id}")]
@@ -97,16 +79,9 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> UpdateFeature(UpdateFeatureDto dto)
         {
 
-            var client = _httpClient.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(dto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var response = await client.PutAsync("https://localhost:7028/api/Features/", stringContent);
-            if (response.IsSuccessStatusCode)
-            {
-
-                return RedirectToAction("Index", "Feature", new { area = "Admin" });
-            }
-            return View();
+            
+            await _featureService.UpdateFeatureAsync(dto);
+            return RedirectToAction("Index", "Feature", new { area = "Admin" });
         }
     }
 }

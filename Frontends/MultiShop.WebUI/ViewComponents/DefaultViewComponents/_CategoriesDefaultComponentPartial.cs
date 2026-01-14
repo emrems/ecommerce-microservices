@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos.CategoryDtos;
+using MultiShop.WebUI.Services.CatalogServices.CategoryServices;
 using Newtonsoft.Json;
 using System.Net.Http;
 
@@ -7,24 +8,18 @@ namespace MultiShop.WebUI.ViewComponents.DefaultViewComponents
 {
     public class _CategoriesDefaultComponentPartial : ViewComponent
     {
-        private readonly IHttpClientFactory _httpClient;
+        private readonly ICategoryService _categoryService;
 
-        public _CategoriesDefaultComponentPartial(IHttpClientFactory httpClient)
+        public _CategoriesDefaultComponentPartial(ICategoryService categoryService)
         {
-            _httpClient = httpClient;
+            _categoryService = categoryService;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var client = _httpClient.CreateClient();
-            var response = await client.GetAsync("https://localhost:7028/api/Categories");
-            if (response.IsSuccessStatusCode)
-            {
-                var jsonData = await response.Content.ReadAsStringAsync();// json gelecek serialize etmek lazım
-                var values = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsonData);
-                return View(values);
-            }
-            return View();
+            
+            var categories = await _categoryService.GetAllCategoryAsync();
+            return View(categories);
         }
     }
 }

@@ -75,6 +75,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiShop.Images", "Service
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requirements", "Requirements", "{00172E39-224C-4435-B8F1-F9105380F399}"
 	ProjectSection(SolutionItems) = preProject
+		Loginindex.txt = Loginindex.txt
 		OcelotCodeExampletxt.txt = OcelotCodeExampletxt.txt
 	EndProjectSection
 EndProject

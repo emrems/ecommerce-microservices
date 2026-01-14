@@ -20,6 +20,10 @@ namespace MultiShop.WebUI.Controllers
         }
         public IActionResult ProductDetail(string id)
         {
+            ViewBag.directory1 = "Ana sayfa";
+            ViewBag.directory2 = "Ürünler";
+            ViewBag.directory3 = "Ürün Listesi";
+
             ViewBag.x = id;
             return View();
         }

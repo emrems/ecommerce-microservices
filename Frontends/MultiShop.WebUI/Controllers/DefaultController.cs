@@ -8,6 +8,8 @@ namespace MultiShop.WebUI.Controllers
         {
             var user = User.Claims;
             int x;
+            ViewBag.directory1 = "Ana Sayfaa";
+            ViewBag.directory2 = "Ürün Listesi";
             return View();
         }
     }

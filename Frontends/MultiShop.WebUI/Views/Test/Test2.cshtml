@@ -1,0 +1,15 @@
+﻿@model List<ResultCategoryDto>
+@{
+    Layout = null;
+}
+
+@foreach (var category in Model)
+{
+    <h2>@category.CategoryName</h2>
+    <ul>
+        @foreach (var result in Model)
+        {
+            <li>@result.CategoryName - @result.ImageUrl</li>
+        }
+    </ul>
+}

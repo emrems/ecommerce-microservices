@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Scaffolding.Metadata;
+using MultiShop.WebUI.Services.İnterfaces;
 using System.Security.Claims;
 
-namespace MultiShop.WebUI.Services
+namespace MultiShop.WebUI.Services.Concrete
 {
     public class LoginService : ILoginService
     {
