@@ -35,7 +35,7 @@ namespace MultiShop.Catalog.Controllers
             await _contactService.CreateContactAsync(dto);
             return Ok("contact başarılı bir şekilde eklendi");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteContactById(string id)
         {
             await _contactService.DeleteContactAsync(id);

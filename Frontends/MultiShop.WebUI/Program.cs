@@ -14,6 +14,10 @@ using MultiShop.WebUI.Services.CatalogServices.BrandServices;
 using MultiShop.WebUI.Services.CatalogServices.AboutServices;
 using MultiShop.WebUI.Services.CatalogServices.ProductImagesServices;
 using MultiShop.WebUI.Services.CatalogServices.ProductDetailServices;
+using MultiShop.WebUI.Services.CommentServices;
+using MultiShop.WebUI.Services.CatalogServices.ContactServices;
+using MultiShop.WebUI.Services.BasketServices;
+using MultiShop.WebUI.Services.DiscountServices;
 
 
 
@@ -64,6 +68,25 @@ builder.Services.AddHttpClient<IUserService, UserService>(client =>
 {
     client.BaseAddress = new Uri(values.IdentityServerUrl);
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+
+
+builder.Services.AddHttpClient<IBasketService, BasketService>(client =>
+{
+    client.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Basket.Path}/");
+   
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+
+builder.Services.AddHttpClient<IDiscountService, DiscountService>(client =>
+{
+    client.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Discount.Path}/");
+
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+
+
+
 
 // CategoryService için httpclient ve message handler ekle
 builder.Services.AddHttpClient<ICategoryService, CategoryService>(opt =>
@@ -118,6 +141,17 @@ builder.Services.AddHttpClient<IProductDetailService, ProductDetailService>(opt 
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}/");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
+
+builder.Services.AddHttpClient<ICommentService, CommentService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Comment.Path}/");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+
+builder.Services.AddHttpClient<IContactServices, ContactService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}/");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 //builder.Services.AddHttpClient<ICategoryService, CategoryService>(opt =>
 //{
 //    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");// catalog servisi altındaki CategoryService de istek atılırken ocelot urli kullanarak aslında temel url ayarlannıyor

@@ -1,6 +1,7 @@
 ﻿using Humanizer;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos.ContactDtos;
+using MultiShop.WebUI.Services.CatalogServices.ContactServices;
 using Newtonsoft.Json;
 using System.Net.Http;
 using System.Text;
@@ -10,10 +11,11 @@ namespace MultiShop.WebUI.Controllers
     
     public class ContactController : Controller
     {
-        private readonly IHttpClientFactory _httpClient;
-        public ContactController(IHttpClientFactory client)
+        private readonly IContactServices _contactServices;
+
+        public ContactController(IContactServices contactServices)
         {
-            _httpClient = client;
+            _contactServices = contactServices;
         }
 
         public IActionResult Index()
@@ -24,17 +26,13 @@ namespace MultiShop.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(CreateContactDto dto)
         {
+            ViewBag.directory1 = "MultiShop";
+            ViewBag.directory2 = "İletişim";
+            ViewBag.directory3 = "Mesaj Gönder";
             dto.IsRead = false;
             dto.SendDate = DateTime.Now;
-            var client = _httpClient.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(dto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var response = await client.PostAsync("https://localhost:7028/api/Contacts", stringContent);
-            if (response.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index", "Default");
-            }
-            return View();
+            await _contactServices.CreateContactAsync(dto);
+            return RedirectToAction("Index", "Default");
         }
     }
 }

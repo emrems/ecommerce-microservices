@@ -7,8 +7,9 @@ using MultiShop.Comment.Entities;
 
 namespace MultiShop.Comment.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
-    [AllowAnonymous]
+  
     [ApiController]
     public class CommentsController : ControllerBase
     {
@@ -67,7 +68,7 @@ namespace MultiShop.Comment.Controllers
 
         }
 
-        [HttpGet("commentListByProductId")]
+        [HttpGet("commentListByProductId/{productId}")]
         public IActionResult GetCommentListByProductId(string productId)
         {
             var comments = _context.UserComments.Where(c => c.ProductId == productId).ToList();
