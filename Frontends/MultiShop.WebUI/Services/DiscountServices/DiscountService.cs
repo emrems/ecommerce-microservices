@@ -21,5 +21,17 @@ namespace MultiShop.WebUI.Services.DiscountServices
             }
             return null!;
         }
+
+        public async Task<int> GetDiscountCouponRate(string code)
+        {
+            
+            var response = await _httpClient.GetAsync($"Discounts/GetDiscountCouponRate?code={code}");
+            if (response.IsSuccessStatusCode)
+            {
+                var rate = await response.Content.ReadFromJsonAsync<int>();
+                return rate;
+            }
+            return 0; 
+        }
     }
 }

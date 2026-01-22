@@ -10,5 +10,6 @@ namespace MultiShop.Discount.Services
         Task DeleteCuponAsync(int id);
         Task<GetByIdCouponDto> getByIdCouponCode(int id);
         Task<ResultCouponDto> getByCodeCouponAsync(string code);
+        int GetDiscountCouponRate(string code);
     }
 }

@@ -17,8 +17,11 @@ namespace MultiShop.WebUI.Controllers
            
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string code, int discountRate,decimal totalNewPriceWithDiscount)
         {
+            ViewBag.code= code;
+            ViewBag.discountRate = discountRate;
+            ViewBag.totalNewPriceWithDiscount = totalNewPriceWithDiscount;
             ViewBag.directory1 = "Ana Sayfaa";
             ViewBag.directory2 = "Ürün Listesi";
             ViewBag.directory3 = "Sepetim";
